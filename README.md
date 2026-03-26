@@ -17,3 +17,10 @@ A modular computer vision toolkit for:
 
 ```bash
 python app.py
+```
+## Docker
+
+```bash
+docker build -t visionrestore-app .
+docker run -p 7860:7860 visionrestore-app
+```

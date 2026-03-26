@@ -145,8 +145,7 @@ def compression_ui(
     summary = (
         "Compression completed.\n\n"
         f"Mode: {mode}\n"
-        f"Value: {value}\n\n"
-        f"Logs:\n{logs}"
+        f"Value: {value}"
     )
 
     return compressed_img, comparison_img, summary
@@ -213,8 +212,7 @@ def tonemap_ui(
         f"saturation: {saturation}\n"
         f"gamma: {gamma}\n"
         f"sharpen: {use_sharpen}\n"
-        f"save_steps: {save_steps}\n\n"
-        f"Logs:\n{logs}"
+        f"save_steps: {save_steps}"
     )
 
     return final_img, gallery, summary
@@ -281,8 +279,7 @@ def restoration_ui(
         f"min_area: {min_area}\n"
         f"width_thr: {width_thr}\n"
         f"telea_radius: {telea_radius}\n"
-        f"ns_radius: {ns_radius}\n\n"
-        f"Logs:\n{logs}"
+        f"ns_radius: {ns_radius}"
     )
 
     return final_img, mask_img, split_img, summary
@@ -318,7 +315,7 @@ with gr.Blocks(title="VisionRestore Toolkit") as demo:
                 )
 
             comp_compare = gr.Image(type="numpy", label="Comparison (Optional)")
-            comp_logs = gr.Textbox(label="Summary / Logs", lines=12)
+            comp_logs = gr.Textbox(label="Summary / Logs", lines=6)
             comp_btn = gr.Button("Run Compression")
 
             comp_btn.click(
@@ -342,7 +339,7 @@ with gr.Blocks(title="VisionRestore Toolkit") as demo:
                 save_steps = gr.Checkbox(value=True, label="Show Intermediate Steps")
 
             tone_gallery = gr.Gallery(label="Intermediate Steps", columns=3, height="auto")
-            tone_logs = gr.Textbox(label="Summary / Logs", lines=12)
+            tone_logs = gr.Textbox(label="Summary / Logs", lines=8)
             tone_btn = gr.Button("Run Tone Mapping")
 
             tone_btn.click(
@@ -377,7 +374,7 @@ with gr.Blocks(title="VisionRestore Toolkit") as demo:
                 restore_mask = gr.Image(type="numpy", label="Mask Overlay")
                 restore_split = gr.Image(type="numpy", label="Thin/Thick Overlay")
 
-            restore_logs = gr.Textbox(label="Summary / Logs", lines=14)
+            restore_logs = gr.Textbox(label="Summary / Logs", lines=8)
 
             restore_btn.click(
                 fn=restoration_ui,
