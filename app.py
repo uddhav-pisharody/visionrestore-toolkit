@@ -243,17 +243,17 @@ def restoration_ui(
     check_script_exists(RESTORE_SCRIPT)
 
     cmd = [
-        sys.executable,
-        str(RESTORE_SCRIPT),
-        "-i", str(input_path),
-        "-o", str(out_dir),
-        "--workdir", str(work_dir),
-        "--percentile", str(percentile),
-        "--min_area", str(min_area),
-        "--width_thr", str(width_thr),
-        "--telea_radius", str(telea_radius),
-        "--ns_radius", str(ns_radius),
-    ]
+    sys.executable,
+    str(RESTORE_SCRIPT),
+    "-i", str(input_path),
+    "-o", str(out_dir),
+    "--workdir", str(work_dir),
+    "--stage2_percentile", str(percentile),
+    "--stage2_min_area", str(min_area),
+    "--width_thr", str(width_thr),
+    "--telea_radius", str(telea_radius),
+    "--ns_radius", str(ns_radius),
+]
 
     ok, logs = run_command(cmd, cwd=ROOT)
     if not ok:
@@ -400,4 +400,4 @@ with gr.Blocks(title="VisionRestore Toolkit") as demo:
 
 if __name__ == "__main__":
     ensure_dir(TEMP_DIR)
-    demo.launch(server_name="0.0.0.0", server_port=7860)
+    demo.launch(server_name="127.0.0.1", server_port=7860)

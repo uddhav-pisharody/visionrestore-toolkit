@@ -4,3 +4,4 @@ temp/
 .env
 .venv/
 .DS_Store
+_work_pipeline
